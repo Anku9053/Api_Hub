@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    // Function to get region code based on user-selected region name
+// async function getRegionCode(regionName) {
+// //   const regionsUrl = "https://sky-scanner3.p.rapidapi.com/regions";
+//   const apiKey = "45783736d2mshd49832eb024b01bp1c5a7ejsn82974b85c0c7";  // Replace with your actual API key
+
+//   const response = await fetch(regionsUrl, {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com',
+//       'X-RapidAPI-Key': apiKey,
+//     },
+//   });
+
+//   const data = await response.json();
+
+//   // Find the region with the specified name
+//   const selectedRegion = data.data.find(region => region.TranslatedName === regionName);
+
+//   return selectedRegion ? selectedRegion.RegionCode : null;
+// }
+
+// // Function to obtain search_id for hotels search
+// async function getSearchId(regionCode, checkinDate, checkoutDate) {
+// //   const hotelsSearchUrl = "https://sky-scanner3.p.rapidapi.com/hotels/search";
+//   const apiKey = "45783736d2mshd49832eb024b01bp1c5a7ejsn82974b85c0c7";  // Replace with your actual API key
+
+//   const params = {
+//     checkin_date: checkinDate,
+//     checkout_date: checkoutDate,
+//     region_code: regionCode,
+//   };
+
+//   const response = await fetch(hotelsSearchUrl, {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com',
+//       'X-RapidAPI-Key': apiKey,
+//     },
+//     params: new URLSearchParams(params),  // Convert params to URL parameters
+//   });
+
+//   const searchData = await response.json();
+
+//   // Check if the search was successful and retrieve the search_id
+//   if (searchData.status && searchData.search_id) {
+//     return searchData.search_id;
+//   } else {
+//     throw new Error('Failed to obtain search_id');
+//   }
+// }
+
+// // Function to search hotels based on search_id
+// async function searchHotels(searchId) {
+// //   const hotelsSearchUrl = `https://sky-scanner3.p.rapidapi.com/hotels/search?search_id=${searchId}`;
+//   const apiKey = "45783736d2mshd49832eb024b01bp1c5a7ejsn82974b85c0c7";  // Replace with your actual API key
+
+//   const response = await fetch(hotelsSearchUrl, {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Host': 'sky-scanner3.p.rapidapi.com',
+//       'X-RapidAPI-Key': apiKey,
+//     },
+//   });
+
+//   const hotelsData = await response.json();
+
+//   // Process hotels data as needed
+//   console.log(hotelsData);
+// }
+
+// // Example usage
+// const userSelectedRegion = 'India';
+// const checkinDate = '2023-09-05';
+// const checkoutDate = '2023-09-30';
+
+// getRegionCode(userSelectedRegion)
+//   .then(regionCode => {
+//     if (regionCode) {
+//       return getSearchId(regionCode, checkinDate, checkoutDate);
+//     } else {
+//       throw new Error('Region not found.');
+//     }
+//   })
+//   .then(searchId => {
+//     searchHotels(207983025);
+//   })
+//   .catch(error => console.error('Error:', error));
+let bag = [];
+// console.log(https://www.skyscanner.net/g/autosuggest/v3/hotels?q=lond&market=US&locale=en-US?);
+fetch("https://www.skyscanner.net/g/autosuggest/v3/hotels?q=india&market=IN&locale=en-US").then((res)=>res.json()).then((data)=>{
+    bag = [...data.results];
+    helpme(bag);
+    // console.log(bag)
+})
+// console.log("Hey")
+function helpme(bag){
+    // console.log(bag)
+    bag.forEach((el)=>{
+       
+        console.log(el)
+
+        
+    })
+}
+
+helpme(bag)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   https://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/{country}/{currency}/{locale}/
+//   {originPlace}/
+//   {destinationPlace}/
+//   {outboundPartialDate}/
+//   {inboundPartialDate}?
+//   apiKey={apiKey}"
+//   -X GET
+//   -H "Accept: application/json"
+</script>
